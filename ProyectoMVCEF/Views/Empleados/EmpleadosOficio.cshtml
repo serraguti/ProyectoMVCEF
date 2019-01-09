@@ -1,0 +1,45 @@
+﻿@using ProyectoMVCEF.Models
+@model List<EMP>
+@{
+    ViewBag.Title = "EmpleadosOficio";
+}
+
+@{ 
+    List<String> oficios = ViewBag.Oficios;
+    ResumenEmpleados resumen = ViewBag.Resumen;
+}
+
+<h2>Resumen de Empleados Oficio</h2>
+
+<form method="post">
+    <select name="oficio" class="form-control">
+        @foreach (String ofi in oficios)
+        {
+            <option value="@ofi">@ofi</option>
+        }
+    </select>
+    <button type="submit" class="btn-success">
+        Mostrar empleados
+    </button>
+</form>
+<hr/>
+@if (Model != null)
+{ 
+    <dl>
+        <dt>Personas: @resumen.Personas</dt>
+        <dd>Suma salarial: @resumen.SumaSalarial</dd>
+        <dd>Media salarial: @resumen.MediaSalarial</dd>
+        <dd>Máximo salario: @resumen.MaximoSalario</dd>
+    </dl>
+    <hr/>
+    <table class="table table-hover">
+        @foreach (EMP emp in Model)
+        {
+            <tr>
+                <td>@emp.APELLIDO</td>
+                <td>@emp.OFICIO</td>
+                <td>@emp.SALARIO</td>
+            </tr>
+        }
+    </table>
+}

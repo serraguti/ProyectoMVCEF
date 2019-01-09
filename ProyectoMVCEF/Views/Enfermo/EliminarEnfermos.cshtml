@@ -1,0 +1,36 @@
+﻿@using ProyectoMVCEF.Models
+@model List<ENFERMO>
+
+@{
+    ViewBag.Title = "EliminarEnfermos";
+}
+
+<h2>Eliminar Enfermos</h2>
+
+<form method="post">
+    <div>
+        <label>Inscripción</label>
+        <input type="text" name="inscripcion" class="form-control"
+               placeholder="Inscripción"/>
+        <button type="submit" class="btn-danger">
+            Eliminar enfermo
+        </button>
+    </div>
+</form>
+<h1 style="color:blueviolet">@ViewBag.Afectados</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>INSCRIPCION</th><th>APELLIDO</th>
+        <th>FECHA NACIMIENTO</th><th>DIRECCION</th>
+    </tr>
+    @foreach (ENFERMO enf in Model)
+    {
+    <tr>
+        <td>@enf.INSCRIPCION</td>
+        <td>@enf.APELLIDO</td>
+        <td>@enf.FECHA_NAC</td>
+        <td>@enf.DIRECCION</td>
+    </tr>
+    }
+</table>
+

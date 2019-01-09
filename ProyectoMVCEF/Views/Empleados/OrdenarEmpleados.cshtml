@@ -1,0 +1,23 @@
+﻿@using ProyectoMVCEF.Models
+@model List<EMP>
+@{
+    ViewBag.Title = "OrdenarEmpleados";
+}
+
+<h2>Ordenar Empleados</h2>
+<h1 style="color:red">Orden: @ViewBag.Orden</h1>
+<table class="table table-hover">
+    <tr>
+        <th>
+@Html.ActionLink("APELLIDO", "OrdenarEmpleados", "Empleados"
+    , new { orden = ViewBag.Orden, columna = ViewBag.Columna }, null)
+        </th>
+    </tr>
+    @foreach (EMP emp in Model)
+    {
+        <tr>
+            <td>@emp.APELLIDO</td>
+        </tr>
+    }
+</table>
+
